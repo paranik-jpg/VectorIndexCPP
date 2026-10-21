@@ -1,0 +1,19 @@
+# Build artifacts
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Binaries
+test_step1
+*.o
+*.out
+
+# Editor files & generated compilation databases
+compile_commands.json
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
