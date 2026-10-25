@@ -29,13 +29,13 @@ $$\|\mathbf{q}\|_2 = 1, \quad \|\mathbf{v}\|_2 = 1 \implies \text{CosineSimilari
 
 This removes $N$ expensive square root (`sqrtf`) and division operations during query evaluation, reducing the similarity check to pure fused multiply-add sequences.
 
-### 3. Bounded Min-Heap for Top-K Search ($O(N \log K)$)
-Rather than sorting all $N$ similarity scores ($O(N \log N)$), VectorIndexCPP maintains a bounded min-heap of size $K$:
-- The root of the min-heap always holds the **current $K$-th best score** (the smallest score among the top $K$).
-- For each vector $i \in [0, N-1]$, if the heap size is $< K$, the element is pushed ($O(\log K)$).
-- Once the heap has $K$ elements, any candidate with $\text{score} \le \text{root.score}$ is discarded in $O(1)$ time.
-- If $\text{score} > \text{root.score}$, the root is popped and the candidate inserted in $O(\log K)$ time.
-- Overall search complexity: $O(N \log K)$ time and $O(K)$ auxiliary memory.
+### 3. Bounded Min-Heap for Top-K Search: `O(N log K)`
+Rather than sorting all `N` similarity scores (`O(N log N)`), VectorIndexCPP maintains a bounded min-heap of size `K`:
+- The root of the min-heap always holds the **current `K`-th best score** (the smallest score among the top `K`).
+- For each vector `i ∈ [0, N - 1]`, if the heap size is `< K`, the element is pushed (`O(log K)`).
+- Once the heap has `K` elements, any candidate with score `≤ root.score` is discarded in `O(1)` time.
+- If score `> root.score`, the root is popped and the candidate inserted in `O(log K)` time.
+- Overall search complexity: `O(N log K)` time and `O(K)` auxiliary memory.
 
 ### 4. Reader-Writer Concurrency (`std::shared_mutex`)
 - **Shared Access (Read)**: Multiple search threads acquire `std::shared_lock<std::shared_mutex>` concurrently without blocking each other.
