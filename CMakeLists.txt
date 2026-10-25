@@ -15,3 +15,7 @@ include_directories(include)
 
 # Binary name & file to compile
 add_executable(test_step1 tests/test_step1.cpp)
+add_executable(test_step2 tests/test_step2.cpp)
+add_executable(test_step3 tests/test_step3.cpp)
+add_executable(test_step4 tests/test_step4.cpp)
+add_executable(test_step5 tests/test_step5.cpp)

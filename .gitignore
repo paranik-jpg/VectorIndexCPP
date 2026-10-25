@@ -6,7 +6,7 @@ cmake_install.cmake
 Makefile
 
 # Binaries
-test_step1
+/test_step*
 *.o
 *.out
 
@@ -17,3 +17,4 @@ compile_commands.json
 *.swp
 *~
 .DS_Store
+
